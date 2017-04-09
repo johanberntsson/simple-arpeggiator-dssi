@@ -71,10 +71,10 @@ am__make_running_with_option = \
   test $$has_opt = yes
 am__make_dryrun = (target_option=n; $(am__make_running_with_option))
 am__make_keepgoing = (target_option=k; $(am__make_running_with_option))
-pkgdatadir = $(datadir)/fluidsynth-dssi
-pkgincludedir = $(includedir)/fluidsynth-dssi
-pkglibdir = $(libdir)/fluidsynth-dssi
-pkglibexecdir = $(libexecdir)/fluidsynth-dssi
+pkgdatadir = $(datadir)/simpleargpeggiator-dssi
+pkgincludedir = $(includedir)/simpleargpeggiator-dssi
+pkglibdir = $(libdir)/simpleargpeggiator-dssi
+pkglibexecdir = $(libexecdir)/simpleargpeggiator-dssi
 am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
 install_sh_DATA = $(install_sh) -c -m 644
 install_sh_PROGRAM = $(install_sh) -c
@@ -89,7 +89,7 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = x86_64-pc-linux-gnu
 host_triplet = x86_64-pc-linux-gnu
-ui_PROGRAMS = FluidSynth-DSSI_gtk$(EXEEXT)
+ui_PROGRAMS = SimpleArpeggiator-DSSI_gtk$(EXEEXT)
 subdir = src
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/configure.ac
@@ -129,29 +129,18 @@ am__uninstall_files_from_dir = { \
   }
 am__installdirs = "$(DESTDIR)$(plugindir)" "$(DESTDIR)$(uidir)"
 LTLIBRARIES = $(plugin_LTLIBRARIES)
-fluidsynth_dssi_la_DEPENDENCIES =
-am_fluidsynth_dssi_la_OBJECTS = fluidsynth_dssi_la-fluidsynth-dssi.lo \
-	fluidsynth_dssi_la-locate_soundfont.lo
-fluidsynth_dssi_la_OBJECTS = $(am_fluidsynth_dssi_la_OBJECTS)
+simplearpeggiator_dssi_la_LIBADD =
+simplearpeggiator_dssi_la_SOURCES = simplearpeggiator-dssi.c
+simplearpeggiator_dssi_la_OBJECTS = simplearpeggiator-dssi.lo
 AM_V_lt = $(am__v_lt_$(V))
 am__v_lt_ = $(am__v_lt_$(AM_DEFAULT_VERBOSITY))
 am__v_lt_0 = --silent
 am__v_lt_1 = 
-fluidsynth_dssi_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
-	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CCLD) \
-	$(fluidsynth_dssi_la_CFLAGS) $(CFLAGS) \
-	$(fluidsynth_dssi_la_LDFLAGS) $(LDFLAGS) -o $@
 PROGRAMS = $(ui_PROGRAMS)
-am_FluidSynth_DSSI_gtk_OBJECTS =  \
-	FluidSynth_DSSI_gtk-FluidSynth-DSSI_gtk.$(OBJEXT) \
-	FluidSynth_DSSI_gtk-load_soundfont_metadata.$(OBJEXT) \
-	FluidSynth_DSSI_gtk-locate_soundfont.$(OBJEXT)
-FluidSynth_DSSI_gtk_OBJECTS = $(am_FluidSynth_DSSI_gtk_OBJECTS)
-FluidSynth_DSSI_gtk_DEPENDENCIES =
-FluidSynth_DSSI_gtk_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
-	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CCLD) \
-	$(FluidSynth_DSSI_gtk_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) \
-	$(LDFLAGS) -o $@
+SimpleArpeggiator_DSSI_gtk_SOURCES = SimpleArpeggiator-DSSI_gtk.c
+SimpleArpeggiator_DSSI_gtk_OBJECTS =  \
+	SimpleArpeggiator-DSSI_gtk.$(OBJEXT)
+SimpleArpeggiator_DSSI_gtk_LDADD = $(LDADD)
 AM_V_P = $(am__v_P_$(V))
 am__v_P_ = $(am__v_P_$(AM_DEFAULT_VERBOSITY))
 am__v_P_0 = false
@@ -186,9 +175,8 @@ AM_V_CCLD = $(am__v_CCLD_$(V))
 am__v_CCLD_ = $(am__v_CCLD_$(AM_DEFAULT_VERBOSITY))
 am__v_CCLD_0 = @echo "  CCLD    " $@;
 am__v_CCLD_1 = 
-SOURCES = $(fluidsynth_dssi_la_SOURCES) $(FluidSynth_DSSI_gtk_SOURCES)
-DIST_SOURCES = $(fluidsynth_dssi_la_SOURCES) \
-	$(FluidSynth_DSSI_gtk_SOURCES)
+SOURCES = simplearpeggiator-dssi.c SimpleArpeggiator-DSSI_gtk.c
+DIST_SOURCES = simplearpeggiator-dssi.c SimpleArpeggiator-DSSI_gtk.c
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -215,15 +203,15 @@ ETAGS = etags
 CTAGS = ctags
 am__DIST_COMMON = $(srcdir)/Makefile.in $(top_srcdir)/depcomp
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
-ACLOCAL = ${SHELL} /home/johan/Downloads/dssi-fluidsynth-dssi-2a22cc437ad2590adf9bad7c5eed1056af0167a3/missing aclocal-1.15
+ACLOCAL = ${SHELL} /home/johan/simple-arpeggiator-dssi/missing aclocal-1.15
 ALSA_CFLAGS = -I/usr/include/alsa
 ALSA_LIBS = 
 AMTAR = $${TAR-tar}
 AM_DEFAULT_VERBOSITY = 1
 AR = ar
-AUTOCONF = ${SHELL} /home/johan/Downloads/dssi-fluidsynth-dssi-2a22cc437ad2590adf9bad7c5eed1056af0167a3/missing autoconf
-AUTOHEADER = ${SHELL} /home/johan/Downloads/dssi-fluidsynth-dssi-2a22cc437ad2590adf9bad7c5eed1056af0167a3/missing autoheader
-AUTOMAKE = ${SHELL} /home/johan/Downloads/dssi-fluidsynth-dssi-2a22cc437ad2590adf9bad7c5eed1056af0167a3/missing automake-1.15
+AUTOCONF = ${SHELL} /home/johan/simple-arpeggiator-dssi/missing autoconf
+AUTOHEADER = ${SHELL} /home/johan/simple-arpeggiator-dssi/missing autoheader
+AUTOMAKE = ${SHELL} /home/johan/simple-arpeggiator-dssi/missing automake-1.15
 AWK = gawk
 CC = gcc
 CCDEPMODE = depmode=gcc3
@@ -259,7 +247,7 @@ LIPO =
 LN_S = ln -s
 LTLIBOBJS = 
 LT_SYS_LIBRARY_PATH = 
-MAKEINFO = ${SHELL} /home/johan/Downloads/dssi-fluidsynth-dssi-2a22cc437ad2590adf9bad7c5eed1056af0167a3/missing makeinfo
+MAKEINFO = ${SHELL} /home/johan/simple-arpeggiator-dssi/missing makeinfo
 MANIFEST_TOOL = :
 MKDIR_P = /bin/mkdir -p
 MODULE_CFLAGS = 
@@ -270,11 +258,11 @@ OBJDUMP = objdump
 OBJEXT = o
 OTOOL = 
 OTOOL64 = 
-PACKAGE = fluidsynth-dssi
-PACKAGE_BUGREPORT = dssi-devel@lists.sourceforge.net
-PACKAGE_NAME = FluidSynth-DSSI
-PACKAGE_STRING = FluidSynth-DSSI 1.0.0
-PACKAGE_TARNAME = fluidsynth-dssi
+PACKAGE = simpleargpeggiator-dssi
+PACKAGE_BUGREPORT = johanberntsson@users.noreply.github.com
+PACKAGE_NAME = SimpleArgpeggiator-DSSI
+PACKAGE_STRING = SimpleArgpeggiator-DSSI 1.0.0
+PACKAGE_TARNAME = simpleargpeggiator-dssi
 PACKAGE_URL = 
 PACKAGE_VERSION = 1.0.0
 PATH_SEPARATOR = :
@@ -287,10 +275,10 @@ SET_MAKE =
 SHELL = /bin/bash
 STRIP = strip
 VERSION = 1.0.0
-abs_builddir = /home/johan/Downloads/dssi-fluidsynth-dssi-2a22cc437ad2590adf9bad7c5eed1056af0167a3/src
-abs_srcdir = /home/johan/Downloads/dssi-fluidsynth-dssi-2a22cc437ad2590adf9bad7c5eed1056af0167a3/src
-abs_top_builddir = /home/johan/Downloads/dssi-fluidsynth-dssi-2a22cc437ad2590adf9bad7c5eed1056af0167a3
-abs_top_srcdir = /home/johan/Downloads/dssi-fluidsynth-dssi-2a22cc437ad2590adf9bad7c5eed1056af0167a3
+abs_builddir = /home/johan/simple-arpeggiator-dssi/src
+abs_srcdir = /home/johan/simple-arpeggiator-dssi/src
+abs_top_builddir = /home/johan/simple-arpeggiator-dssi
+abs_top_srcdir = /home/johan/simple-arpeggiator-dssi
 ac_ct_AR = ar
 ac_ct_CC = gcc
 ac_ct_DUMPBIN = 
@@ -319,7 +307,7 @@ host_vendor = pc
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/johan/Downloads/dssi-fluidsynth-dssi-2a22cc437ad2590adf9bad7c5eed1056af0167a3/install-sh
+install_sh = ${SHELL} /home/johan/simple-arpeggiator-dssi/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -340,26 +328,22 @@ target_alias =
 top_build_prefix = ../
 top_builddir = ..
 top_srcdir = ..
-uidir = $(libdir)/dssi/fluidsynth-dssi
+uidir = $(libdir)/dssi/simplearpeggiator-dssi
 plugindir = $(libdir)/dssi
-plugin_LTLIBRARIES = fluidsynth-dssi.la
-FluidSynth_DSSI_gtk_SOURCES = \
-	FluidSynth-DSSI_gtk.c \
-	load_soundfont_metadata.c \
-	load_soundfont_metadata.h \
-	locate_soundfont.c
+plugin_LTLIBRARIES = simplearpeggiator-dssi.la
+simple_arpeggiator_dssi_gtk_SOURCES = \
+	SimpleArpeggiator-DSSI_gtk.c
 
-FluidSynth_DSSI_gtk_CFLAGS = -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng16 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 $(AM_CFLAGS)
-FluidSynth_DSSI_gtk_LDADD = -lm -lgtk-x11-2.0 -lgdk-x11-2.0 -lpangocairo-1.0 -latk-1.0 -lcairo -lgdk_pixbuf-2.0 -lgio-2.0 -lpangoft2-1.0 -lpango-1.0 -lgobject-2.0 -lglib-2.0 -lfontconfig -lfreetype $(AM_LDFLAGS)
-#FluidSynth_DSSI_gtk_LDADD = -lm -lmx -lgtk-x11-2.0 -lgdk-x11-2.0 -lpangocairo-1.0 -latk-1.0 -lcairo -lgdk_pixbuf-2.0 -lgio-2.0 -lpangoft2-1.0 -lpango-1.0 -lgobject-2.0 -lglib-2.0 -lfontconfig -lfreetype $(AM_LDFLAGS)
-fluidsynth_dssi_la_SOURCES = \
-	fluidsynth-dssi.c \
-	fluidsynth-dssi.h \
-	locate_soundfont.c
+simple_arpeggiator_dssi_gtk_CFLAGS = -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng16 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 $(AM_CFLAGS)
+simple_arpeggiator_dssi_gtk_LDADD = -lm -lgtk-x11-2.0 -lgdk-x11-2.0 -lpangocairo-1.0 -latk-1.0 -lcairo -lgdk_pixbuf-2.0 -lgio-2.0 -lpangoft2-1.0 -lpango-1.0 -lgobject-2.0 -lglib-2.0 -lfontconfig -lfreetype $(AM_LDFLAGS)
+#simple_arpeggiator_dssi_gtk_LDADD = -lm -lmx -lgtk-x11-2.0 -lgdk-x11-2.0 -lpangocairo-1.0 -latk-1.0 -lcairo -lgdk_pixbuf-2.0 -lgio-2.0 -lpangoft2-1.0 -lpango-1.0 -lgobject-2.0 -lglib-2.0 -lfontconfig -lfreetype $(AM_LDFLAGS)
+simple_arpeggiator_dssi_la_SOURCES = \
+	simplearpeggiator-dssi.c \
+	simplearpeggiator-dssi.h
 
-fluidsynth_dssi_la_CFLAGS = @FLUID_CFLAGS@
-fluidsynth_dssi_la_LDFLAGS = -module -avoid-version
-fluidsynth_dssi_la_LIBADD = -lm @FLUID_LIBS@
+simple_arpeggiator_dssi_la_CFLAGS = 
+simple_arpeggiator_dssi_la_LDFLAGS = -module -avoid-version
+simple_arpeggiator_dssi_la_LIBADD = -lm 
 all: all-am
 
 .SUFFIXES:
@@ -429,8 +413,8 @@ clean-pluginLTLIBRARIES:
 	  rm -f $${locs}; \
 	}
 
-fluidsynth-dssi.la: $(fluidsynth_dssi_la_OBJECTS) $(fluidsynth_dssi_la_DEPENDENCIES) $(EXTRA_fluidsynth_dssi_la_DEPENDENCIES) 
-	$(AM_V_CCLD)$(fluidsynth_dssi_la_LINK) -rpath $(plugindir) $(fluidsynth_dssi_la_OBJECTS) $(fluidsynth_dssi_la_LIBADD) $(LIBS)
+simplearpeggiator-dssi.la: $(simplearpeggiator_dssi_la_OBJECTS) $(simplearpeggiator_dssi_la_DEPENDENCIES) $(EXTRA_simplearpeggiator_dssi_la_DEPENDENCIES) 
+	$(AM_V_CCLD)$(LINK) -rpath $(plugindir) $(simplearpeggiator_dssi_la_OBJECTS) $(simplearpeggiator_dssi_la_LIBADD) $(LIBS)
 install-uiPROGRAMS: $(ui_PROGRAMS)
 	@$(NORMAL_INSTALL)
 	@list='$(ui_PROGRAMS)'; test -n "$(uidir)" || list=; \
@@ -481,9 +465,9 @@ clean-uiPROGRAMS:
 	echo " rm -f" $$list; \
 	rm -f $$list
 
-FluidSynth-DSSI_gtk$(EXEEXT): $(FluidSynth_DSSI_gtk_OBJECTS) $(FluidSynth_DSSI_gtk_DEPENDENCIES) $(EXTRA_FluidSynth_DSSI_gtk_DEPENDENCIES) 
-	@rm -f FluidSynth-DSSI_gtk$(EXEEXT)
-	$(AM_V_CCLD)$(FluidSynth_DSSI_gtk_LINK) $(FluidSynth_DSSI_gtk_OBJECTS) $(FluidSynth_DSSI_gtk_LDADD) $(LIBS)
+SimpleArpeggiator-DSSI_gtk$(EXEEXT): $(SimpleArpeggiator_DSSI_gtk_OBJECTS) $(SimpleArpeggiator_DSSI_gtk_DEPENDENCIES) $(EXTRA_SimpleArpeggiator_DSSI_gtk_DEPENDENCIES) 
+	@rm -f SimpleArpeggiator-DSSI_gtk$(EXEEXT)
+	$(AM_V_CCLD)$(LINK) $(SimpleArpeggiator_DSSI_gtk_OBJECTS) $(SimpleArpeggiator_DSSI_gtk_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -491,11 +475,8 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-include ./$(DEPDIR)/FluidSynth_DSSI_gtk-FluidSynth-DSSI_gtk.Po
-include ./$(DEPDIR)/FluidSynth_DSSI_gtk-load_soundfont_metadata.Po
-include ./$(DEPDIR)/FluidSynth_DSSI_gtk-locate_soundfont.Po
-include ./$(DEPDIR)/fluidsynth_dssi_la-fluidsynth-dssi.Plo
-include ./$(DEPDIR)/fluidsynth_dssi_la-locate_soundfont.Plo
+include ./$(DEPDIR)/SimpleArpeggiator-DSSI_gtk.Po
+include ./$(DEPDIR)/simplearpeggiator-dssi.Plo
 
 .c.o:
 	$(AM_V_CC)$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
@@ -517,62 +498,6 @@ include ./$(DEPDIR)/fluidsynth_dssi_la-locate_soundfont.Plo
 #	$(AM_V_CC)source='$<' object='$@' libtool=yes \
 #	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
 #	$(AM_V_CC_no)$(LTCOMPILE) -c -o $@ $<
-
-fluidsynth_dssi_la-fluidsynth-dssi.lo: fluidsynth-dssi.c
-	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(fluidsynth_dssi_la_CFLAGS) $(CFLAGS) -MT fluidsynth_dssi_la-fluidsynth-dssi.lo -MD -MP -MF $(DEPDIR)/fluidsynth_dssi_la-fluidsynth-dssi.Tpo -c -o fluidsynth_dssi_la-fluidsynth-dssi.lo `test -f 'fluidsynth-dssi.c' || echo '$(srcdir)/'`fluidsynth-dssi.c
-	$(AM_V_at)$(am__mv) $(DEPDIR)/fluidsynth_dssi_la-fluidsynth-dssi.Tpo $(DEPDIR)/fluidsynth_dssi_la-fluidsynth-dssi.Plo
-#	$(AM_V_CC)source='fluidsynth-dssi.c' object='fluidsynth_dssi_la-fluidsynth-dssi.lo' libtool=yes \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(fluidsynth_dssi_la_CFLAGS) $(CFLAGS) -c -o fluidsynth_dssi_la-fluidsynth-dssi.lo `test -f 'fluidsynth-dssi.c' || echo '$(srcdir)/'`fluidsynth-dssi.c
-
-fluidsynth_dssi_la-locate_soundfont.lo: locate_soundfont.c
-	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(fluidsynth_dssi_la_CFLAGS) $(CFLAGS) -MT fluidsynth_dssi_la-locate_soundfont.lo -MD -MP -MF $(DEPDIR)/fluidsynth_dssi_la-locate_soundfont.Tpo -c -o fluidsynth_dssi_la-locate_soundfont.lo `test -f 'locate_soundfont.c' || echo '$(srcdir)/'`locate_soundfont.c
-	$(AM_V_at)$(am__mv) $(DEPDIR)/fluidsynth_dssi_la-locate_soundfont.Tpo $(DEPDIR)/fluidsynth_dssi_la-locate_soundfont.Plo
-#	$(AM_V_CC)source='locate_soundfont.c' object='fluidsynth_dssi_la-locate_soundfont.lo' libtool=yes \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(fluidsynth_dssi_la_CFLAGS) $(CFLAGS) -c -o fluidsynth_dssi_la-locate_soundfont.lo `test -f 'locate_soundfont.c' || echo '$(srcdir)/'`locate_soundfont.c
-
-FluidSynth_DSSI_gtk-FluidSynth-DSSI_gtk.o: FluidSynth-DSSI_gtk.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(FluidSynth_DSSI_gtk_CFLAGS) $(CFLAGS) -MT FluidSynth_DSSI_gtk-FluidSynth-DSSI_gtk.o -MD -MP -MF $(DEPDIR)/FluidSynth_DSSI_gtk-FluidSynth-DSSI_gtk.Tpo -c -o FluidSynth_DSSI_gtk-FluidSynth-DSSI_gtk.o `test -f 'FluidSynth-DSSI_gtk.c' || echo '$(srcdir)/'`FluidSynth-DSSI_gtk.c
-	$(AM_V_at)$(am__mv) $(DEPDIR)/FluidSynth_DSSI_gtk-FluidSynth-DSSI_gtk.Tpo $(DEPDIR)/FluidSynth_DSSI_gtk-FluidSynth-DSSI_gtk.Po
-#	$(AM_V_CC)source='FluidSynth-DSSI_gtk.c' object='FluidSynth_DSSI_gtk-FluidSynth-DSSI_gtk.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(FluidSynth_DSSI_gtk_CFLAGS) $(CFLAGS) -c -o FluidSynth_DSSI_gtk-FluidSynth-DSSI_gtk.o `test -f 'FluidSynth-DSSI_gtk.c' || echo '$(srcdir)/'`FluidSynth-DSSI_gtk.c
-
-FluidSynth_DSSI_gtk-FluidSynth-DSSI_gtk.obj: FluidSynth-DSSI_gtk.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(FluidSynth_DSSI_gtk_CFLAGS) $(CFLAGS) -MT FluidSynth_DSSI_gtk-FluidSynth-DSSI_gtk.obj -MD -MP -MF $(DEPDIR)/FluidSynth_DSSI_gtk-FluidSynth-DSSI_gtk.Tpo -c -o FluidSynth_DSSI_gtk-FluidSynth-DSSI_gtk.obj `if test -f 'FluidSynth-DSSI_gtk.c'; then $(CYGPATH_W) 'FluidSynth-DSSI_gtk.c'; else $(CYGPATH_W) '$(srcdir)/FluidSynth-DSSI_gtk.c'; fi`
-	$(AM_V_at)$(am__mv) $(DEPDIR)/FluidSynth_DSSI_gtk-FluidSynth-DSSI_gtk.Tpo $(DEPDIR)/FluidSynth_DSSI_gtk-FluidSynth-DSSI_gtk.Po
-#	$(AM_V_CC)source='FluidSynth-DSSI_gtk.c' object='FluidSynth_DSSI_gtk-FluidSynth-DSSI_gtk.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(FluidSynth_DSSI_gtk_CFLAGS) $(CFLAGS) -c -o FluidSynth_DSSI_gtk-FluidSynth-DSSI_gtk.obj `if test -f 'FluidSynth-DSSI_gtk.c'; then $(CYGPATH_W) 'FluidSynth-DSSI_gtk.c'; else $(CYGPATH_W) '$(srcdir)/FluidSynth-DSSI_gtk.c'; fi`
-
-FluidSynth_DSSI_gtk-load_soundfont_metadata.o: load_soundfont_metadata.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(FluidSynth_DSSI_gtk_CFLAGS) $(CFLAGS) -MT FluidSynth_DSSI_gtk-load_soundfont_metadata.o -MD -MP -MF $(DEPDIR)/FluidSynth_DSSI_gtk-load_soundfont_metadata.Tpo -c -o FluidSynth_DSSI_gtk-load_soundfont_metadata.o `test -f 'load_soundfont_metadata.c' || echo '$(srcdir)/'`load_soundfont_metadata.c
-	$(AM_V_at)$(am__mv) $(DEPDIR)/FluidSynth_DSSI_gtk-load_soundfont_metadata.Tpo $(DEPDIR)/FluidSynth_DSSI_gtk-load_soundfont_metadata.Po
-#	$(AM_V_CC)source='load_soundfont_metadata.c' object='FluidSynth_DSSI_gtk-load_soundfont_metadata.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(FluidSynth_DSSI_gtk_CFLAGS) $(CFLAGS) -c -o FluidSynth_DSSI_gtk-load_soundfont_metadata.o `test -f 'load_soundfont_metadata.c' || echo '$(srcdir)/'`load_soundfont_metadata.c
-
-FluidSynth_DSSI_gtk-load_soundfont_metadata.obj: load_soundfont_metadata.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(FluidSynth_DSSI_gtk_CFLAGS) $(CFLAGS) -MT FluidSynth_DSSI_gtk-load_soundfont_metadata.obj -MD -MP -MF $(DEPDIR)/FluidSynth_DSSI_gtk-load_soundfont_metadata.Tpo -c -o FluidSynth_DSSI_gtk-load_soundfont_metadata.obj `if test -f 'load_soundfont_metadata.c'; then $(CYGPATH_W) 'load_soundfont_metadata.c'; else $(CYGPATH_W) '$(srcdir)/load_soundfont_metadata.c'; fi`
-	$(AM_V_at)$(am__mv) $(DEPDIR)/FluidSynth_DSSI_gtk-load_soundfont_metadata.Tpo $(DEPDIR)/FluidSynth_DSSI_gtk-load_soundfont_metadata.Po
-#	$(AM_V_CC)source='load_soundfont_metadata.c' object='FluidSynth_DSSI_gtk-load_soundfont_metadata.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(FluidSynth_DSSI_gtk_CFLAGS) $(CFLAGS) -c -o FluidSynth_DSSI_gtk-load_soundfont_metadata.obj `if test -f 'load_soundfont_metadata.c'; then $(CYGPATH_W) 'load_soundfont_metadata.c'; else $(CYGPATH_W) '$(srcdir)/load_soundfont_metadata.c'; fi`
-
-FluidSynth_DSSI_gtk-locate_soundfont.o: locate_soundfont.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(FluidSynth_DSSI_gtk_CFLAGS) $(CFLAGS) -MT FluidSynth_DSSI_gtk-locate_soundfont.o -MD -MP -MF $(DEPDIR)/FluidSynth_DSSI_gtk-locate_soundfont.Tpo -c -o FluidSynth_DSSI_gtk-locate_soundfont.o `test -f 'locate_soundfont.c' || echo '$(srcdir)/'`locate_soundfont.c
-	$(AM_V_at)$(am__mv) $(DEPDIR)/FluidSynth_DSSI_gtk-locate_soundfont.Tpo $(DEPDIR)/FluidSynth_DSSI_gtk-locate_soundfont.Po
-#	$(AM_V_CC)source='locate_soundfont.c' object='FluidSynth_DSSI_gtk-locate_soundfont.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(FluidSynth_DSSI_gtk_CFLAGS) $(CFLAGS) -c -o FluidSynth_DSSI_gtk-locate_soundfont.o `test -f 'locate_soundfont.c' || echo '$(srcdir)/'`locate_soundfont.c
-
-FluidSynth_DSSI_gtk-locate_soundfont.obj: locate_soundfont.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(FluidSynth_DSSI_gtk_CFLAGS) $(CFLAGS) -MT FluidSynth_DSSI_gtk-locate_soundfont.obj -MD -MP -MF $(DEPDIR)/FluidSynth_DSSI_gtk-locate_soundfont.Tpo -c -o FluidSynth_DSSI_gtk-locate_soundfont.obj `if test -f 'locate_soundfont.c'; then $(CYGPATH_W) 'locate_soundfont.c'; else $(CYGPATH_W) '$(srcdir)/locate_soundfont.c'; fi`
-	$(AM_V_at)$(am__mv) $(DEPDIR)/FluidSynth_DSSI_gtk-locate_soundfont.Tpo $(DEPDIR)/FluidSynth_DSSI_gtk-locate_soundfont.Po
-#	$(AM_V_CC)source='locate_soundfont.c' object='FluidSynth_DSSI_gtk-locate_soundfont.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(FluidSynth_DSSI_gtk_CFLAGS) $(CFLAGS) -c -o FluidSynth_DSSI_gtk-locate_soundfont.obj `if test -f 'locate_soundfont.c'; then $(CYGPATH_W) 'locate_soundfont.c'; else $(CYGPATH_W) '$(srcdir)/locate_soundfont.c'; fi`
 
 mostlyclean-libtool:
 	-rm -f *.lo
@@ -796,8 +721,8 @@ uninstall-am: uninstall-pluginLTLIBRARIES uninstall-uiPROGRAMS
 install-exec-hook:
 	if test -x $(DESTDIR)$(bindir)/jack-dssi-host$(EXEEXT) ; then \
 	  cd $(DESTDIR)$(bindir) ; \
-	  if ! test -x ./fluidsynth-dssi$(EXEEXT) ; then \
-	    $(LN_S) jack-dssi-host$(EXEEXT) fluidsynth-dssi$(EXEEXT) ; \
+	  if ! test -x ./simplearpeggiator-dssi$(EXEEXT) ; then \
+	    $(LN_S) jack-dssi-host$(EXEEXT) simplearpeggiator-dssi$(EXEEXT) ; \
 	  fi ; \
 	fi
 

@@ -1,9 +1,5 @@
 Simple Arpeggiator (DSSI version)
 
-
-Makefile based on https://github.com/falkTX/dssi-vst/blob/master/Makefile
-and https://sourceforge.net/p/dssi/fluidsynth-dssi/ci/release_0_4/tree/Makefile
-
 Introduction
 ============
 
@@ -41,7 +37,7 @@ For other systems you need to have the following installed:
     - the LADSPA v1.x SDK.
 
     - pkgconfig with PKG_CONFIG_PATH set appropriately to pick up
-        DSSI, liblo, and fluidsynth (plus libdssialsacompat if used).
+        DSSI, and liblo
 
     - GTK+ version 2.x or later.  (If GTK+ is not found, the plugin
         will be built without the GUI.)

@@ -1,48 +1,44 @@
 ## Process this file with automake to produce Makefile.in
 
 if BUILD_GUI
-ui_PROGRAMS = FluidSynth-DSSI_gtk
+ui_PROGRAMS = SimpleArpeggiator-DSSI_gtk
 else
 ui_PROGRAMS =
 endif
 
-uidir = $(libdir)/dssi/fluidsynth-dssi
+uidir = $(libdir)/dssi/simplearpeggiator-dssi
 
 plugindir = $(libdir)/dssi
 
-plugin_LTLIBRARIES = fluidsynth-dssi.la
+plugin_LTLIBRARIES = simplearpeggiator-dssi.la
 
-FluidSynth_DSSI_gtk_SOURCES = \
-	FluidSynth-DSSI_gtk.c \
-	load_soundfont_metadata.c \
-	load_soundfont_metadata.h \
-	locate_soundfont.c
+simple_arpeggiator_dssi_gtk_SOURCES = \
+	SimpleArpeggiator-DSSI_gtk.c
 
-FluidSynth_DSSI_gtk_CFLAGS = @GTK_CFLAGS@ $(AM_CFLAGS)
+simple_arpeggiator_dssi_gtk_CFLAGS = @GTK_CFLAGS@ $(AM_CFLAGS)
 
 if DARWIN
-FluidSynth_DSSI_gtk_LDADD = -lm -lmx @GTK_LIBS@ $(AM_LDFLAGS)
+simple_arpeggiator_dssi_gtk_LDADD = -lm -lmx @GTK_LIBS@ $(AM_LDFLAGS)
 else
-FluidSynth_DSSI_gtk_LDADD = -lm @GTK_LIBS@ $(AM_LDFLAGS)
+simple_arpeggiator_dssi_gtk_LDADD = -lm @GTK_LIBS@ $(AM_LDFLAGS)
 endif
 
-fluidsynth_dssi_la_SOURCES = \
-	fluidsynth-dssi.c \
-	fluidsynth-dssi.h \
-	locate_soundfont.c
+simple_arpeggiator_dssi_la_SOURCES = \
+	simplearpeggiator-dssi.c \
+	simplearpeggiator-dssi.h
 
-fluidsynth_dssi_la_CFLAGS = @FLUID_CFLAGS@
+simple_arpeggiator_dssi_la_CFLAGS = 
 
-fluidsynth_dssi_la_LDFLAGS = -module -avoid-version
+simple_arpeggiator_dssi_la_LDFLAGS = -module -avoid-version
 
-fluidsynth_dssi_la_LIBADD = -lm @FLUID_LIBS@
+simple_arpeggiator_dssi_la_LIBADD = -lm 
 
 # create symlinks for the plugin to jack-dssi-host
 install-exec-hook:
 	if test -x $(DESTDIR)$(bindir)/jack-dssi-host$(EXEEXT) ; then \
 	  cd $(DESTDIR)$(bindir) ; \
-	  if ! test -x ./fluidsynth-dssi$(EXEEXT) ; then \
-	    $(LN_S) jack-dssi-host$(EXEEXT) fluidsynth-dssi$(EXEEXT) ; \
+	  if ! test -x ./simplearpeggiator-dssi$(EXEEXT) ; then \
+	    $(LN_S) jack-dssi-host$(EXEEXT) simplearpeggiator-dssi$(EXEEXT) ; \
 	  fi ; \
 	fi
 

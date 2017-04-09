@@ -1,8 +1,8 @@
 dnl Process this file with autoconf to produce a configure script.
 
-AC_INIT(FluidSynth-DSSI, 1.0.0, dssi-devel@lists.sourceforge.net)
+AC_INIT(SimpleArgpeggiator-DSSI, 1.0.0, johanberntsson@users.noreply.github.com)
 
-AC_CONFIG_SRCDIR(src/fluidsynth-dssi.c)
+AC_CONFIG_SRCDIR(src/simplearpeggiator-dssi.c)
 AM_INIT_AUTOMAKE
 AM_CONFIG_HEADER(config.h)
 
